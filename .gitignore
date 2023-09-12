@@ -121,6 +121,8 @@ dist
 
 # Stores VSCode versions used for testing VSCode extensions
 .vscode-test
+.vscode/settings.json
+.vscode
 
 # yarn v2
 .yarn/cache
@@ -128,3 +130,10 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+
+src/models/config.js
+.sequelizerc
+src/config
+src/seeders
+src/migrations
