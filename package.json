@@ -1,0 +1,34 @@
+{
+  "name": "comision-21647b-leonardo-alvarez",
+  "version": "1.0.0",
+  "description": "preyecto final",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leoaz-992/comision-21647B-leonardo-alvarez.git"
+  },
+  "author": "Leonardo Alvarez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leoaz-992/comision-21647B-leonardo-alvarez/issues"
+  },
+  "homepage": "https://github.com/leoaz-992/comision-21647B-leonardo-alvarez#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "helmet": "^7.0.0",
+    "morgan": "^1.10.0",
+    "mysql2": "^3.6.1",
+    "sequelize": "^6.33.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
