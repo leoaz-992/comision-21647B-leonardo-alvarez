@@ -3,7 +3,7 @@ const {getAllPost, createPost,getOnePost,deletePost,updatePost}= require('../con
 
 
 
-routes.get('/',getAllPost);// todos los post
+routes.get('/',getAllPost);// trae todos los post
 routes.post('/create', createPost);//crea un post
 routes.get('/post/:post_id',getOnePost)//muestra un post por su id
 routes.delete('/post/:post_id',deletePost)//elimina un post
