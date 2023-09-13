@@ -1,11 +1,11 @@
-const Post = require('../models').Post
+const Posts = require('../models').Post
 
 const PostController ={}
 //lista todos los posts
  PostController.getAllPost= async(req,res)=>{
   try {
-    const post = await Post.findAll();
-    return res.status(200).json(post);
+    const posts = await Posts.findAll();
+    return res.status(200).json(posts);
   } catch (error) {
     return res.status(500).json({mensaje:`se produjo el siguiente error: ${error}`})
   }
@@ -13,7 +13,7 @@ const PostController ={}
  //crea un post
  PostController.createPost = async (req, res) => {
   try {
-    const post = await Post.create(req.body)
+    const post = await Posts.create(req.body)
     return res.status(201).json(post)
   } catch (error) {
     console.log(error)
@@ -23,13 +23,9 @@ const PostController ={}
 //muestra un post buscando por su id
 PostController.getOnePost =async (req,res)=>{
   try {
-    const id = req.params.post_id;
-    const post = await Post.findAll({
-      where: {
-        id: id
-      }
-    });
-    if(post.length === 0){
+    const id = parseInt(req.params.post_id);
+    const post = await Posts.findByPk(id);
+    if(post === null){
       return res.status(404).json(`no se encontro post con el id ${id}`)
     }
     return res.status(200).json(post)
@@ -41,13 +37,12 @@ PostController.getOnePost =async (req,res)=>{
 PostController.deletePost =async (req,res)=>{
   try {
     const id = parseInt( req.params.post_id );
-    const post = await Post.findByPk(id);
+    const post = await Posts.findByPk(id);
     if (post === null) {
       return res.status(404).json(`no se encontro post con el id ${id}`)
     }
     post.destroy();
     return res.status(200).json(`se elimino el post con el titulo: ${post.titlePost}`)
-
   } catch (error) {
     return res.status(500).json({mensaje:`no se pudo eliminar el post.`, error:`${error}`})
   }
@@ -58,20 +53,17 @@ PostController.deletePost =async (req,res)=>{
 PostController.updatePost =async (req,res)=>{
   try {
     const id = parseInt( req.params.post_id );
-    const post = await Post.findByPk(id);
-    if (post === null) {
-      return res.status(404).json(`no se encontro post con el id ${id}`)
-    }
+    const post = await Posts.findByPk(id);
     const{titlePost,contentPost,imagePost} =req.body;
-    post.titlePost = titlePost;
-    post.contentPost = contentPost;
-    post.imagePost = imagePost;
-
-    await post.save({ fields: ['titlePost','contentPost','imagePost'] });
-    return res.status(200).json({mensaje:`se edito el post con id: ${id}`,data:post});
-
+    post.set({
+      titlePost : titlePost,
+      contentPost : contentPost,
+      imagePost : imagePost,
+    });
+    await post.save();
+    return res.status(200).json({mensaje:`se modifico el post con id: ${id}`,data:post});
   } catch (error) {
-    return res.status(500).json({mensaje:`no se pudo eliminar el post.`, error:`${error}`})
+    return res.status(500).json({mensaje:`no se pudo editar el post.`, error:`${error}`})
   }
 
 }
