@@ -5,7 +5,7 @@ const PostController ={}
  PostController.getAllPost= async(req,res)=>{
   try {
     const posts = await Posts.findAll();
-    return res.status(200).json(posts);
+    return res.render('template_post/index',{posts, titulo:"mis publicaciones"});
   } catch (error) {
     return res.status(500).json({mensaje:`se produjo el siguiente error: ${error}`})
   }
