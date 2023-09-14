@@ -2,7 +2,7 @@ const { Op } = require("sequelize");
 const Posts = require('../models').Post
 
 const middlewaresValidate = {}
-
+//para validar que no se cree un post con duplicados
 middlewaresValidate.validateNewPost = async (req, res, next) => {
   try {
     const{titlePost,contentPost,imagePost} =req.body;
@@ -15,8 +15,8 @@ middlewaresValidate.validateNewPost = async (req, res, next) => {
         ]
       }
     });
-    if(arrayPost.length > 1 ){
-      return res.status(404).json({mensaje:``})
+    if(arrayPost.length > 0 ){
+      return res.render('base/error',{titulo:"ERROR",link:'Ir a mis publicaciones', mensaje: 'el post ya existe', color:"danger"})
     } 
     next()
   } catch (error) {
@@ -24,13 +24,13 @@ middlewaresValidate.validateNewPost = async (req, res, next) => {
   }
   
 }
-
+//para validar que no se repitan post al editarlos
 middlewaresValidate.validateNotRepeatedPost = async (req, res, next) => {
   try {
     const id = parseInt( req.params.post_id );
     const post = await Posts.findByPk(id);
     if (post === null) {
-      return res.status(404).json(`no se encontro post con el id: ${id}`)
+      return res.render('template_post/createPost',{titulo:"ERROR",link:'Ir a mis publicaciones', mensaje: `no se encontro post con el id: ${id}`, color:"danger"})
     }
     const{titlePost,contentPost, imagePost} =req.body;
     const arrayPosts = await Posts.findAll({
@@ -44,13 +44,14 @@ middlewaresValidate.validateNotRepeatedPost = async (req, res, next) => {
     const postWithsameContent = arrayPosts.find(p=> p.contentPost=== contentPost);
     const postWithsameImage   = arrayPosts.find(p=> p.imagePost ==imagePost);
     if(postWithsameTitle){
-      return res.status(404).json({mensaje:`ya existe un post con el titulo: ${titlePost}`});
+      return res.render('template_post/createPost',{titulo:"ERROR",link:'Ir a mis publicaciones', mensaje: `ya existe un post con el titulo: ${titlePost}`, color:"danger"})
     }
     if(postWithsameContent){
-      return res.status(404).json({mensaje:`ya existe un post con la descripcion:${contentPost}`});
+      return res.render('template_post/createPost',{titulo:"ERROR",link:'Ir a mis publicaciones', mensaje:`ya existe un post con la descripcion:${contentPost}`, color:"danger"})
+      return res.status(404).json({});
     }
     if(postWithsameImage){
-      return res.status(404).json({mensaje:`ya existe un post la imagen: ${imagePost}`});
+      return res.render('template_post/createPost',{titulo:"ERROR",link:'Ir a mis publicaciones', mensaje: `ya existe un post la imagen: ${imagePost}`, color:"danger"})
     }
     next()
   } catch (error) {
@@ -58,5 +59,11 @@ middlewaresValidate.validateNotRepeatedPost = async (req, res, next) => {
   }
   
 }
-
-module.exports = middlewaresValidate
+middlewaresValidate.validateExistPostWithId= async (req, res, next) =>{
+  const id = parseInt( req.params.post_id );
+  const post = await Posts.findByPk(id);
+  if (post === null) {
+    return res.status(404).render('base/error',{titulo:"ERROR",link:'Ir a mis publicaciones', mensaje:`No exite post con el id: ${id}`,showb:false, color:"warning"})
+  }
+}
+module.exports = middlewaresValidate;

@@ -1,0 +1,30 @@
+<%- include('../base/head',{titulo:titulo}); %>
+<%- include('../base/nav',{tituloHeader:link,showbutton:false}); %>
+<div class="bg-dark">
+  <div class="container pt-3 pb-3">
+    <div
+      class="alert alert-<%=color%> alert-dismissible fade show d-flex justify-content-center align-items-center"
+      role="alert"
+    >
+      <i class="bi bi-exclamation-square mx-2 text-danger fs-2"></i>
+      <span class="fs-3"><%=mensaje%></span>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+      ></button>
+    </div>
+    <div class="text-center py-3 ">
+      <h1 class="display-1 pt-5 font-weight-bold text-white-50">404</h1>
+      <h1 class="display-4 pt-1 pb-3 text-white-50">Page not found</h1>
+      <h3 class="font-weight-light text-secondary">
+        The page you are looking for might have <br />
+        been removed
+      </h3>
+      <a href="/" class="btn btn-success mt-3 pt-3 pb-3 pr-4 pl-4"
+        >Ir a inicio</a>
+    </div>
+  </div>
+</div>
+<%- include('../base/footer'); %>
