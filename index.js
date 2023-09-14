@@ -15,7 +15,7 @@ app.set('views', __dirname + '/src/views');
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
-
+app.use(express.static(__dirname));
 
 app.use('/',postRutes)
 app.get('*',(req,res)=>{

@@ -1,6 +1,38 @@
 <nav class="navbar sticky-top bg-body-tertiary border-bottom border-info">
   <div class="container-fluid">
     <a class="navbar-brand" href="/"><%=tituloHeader%></a>
-    <a class="btn btn-sm btn-outline-secondary mx-2" href="" >nueva publicacion</a>
+    <button type="button" class="btn btn-sm btn-outline-secondary mx-2" data-bs-toggle="modal" data-bs-target="#formNewPost">
+      nueva publicacion
+    </button>
   </div>
 </nav>
+<div class="modal fade" id="formNewPost" tabindex="-1" aria-labelledby="formNewPost" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">nueva publicación</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="/create" method="post">
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">titulo:</label>
+            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="ingrese el titulo de la publicación">
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">descripción</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Url de la imagen:</label>
+            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="ingrese una url">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary">crear publicación</button>
+      </div>
+    </div>
+  </div>
+</div>
