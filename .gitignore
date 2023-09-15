@@ -133,7 +133,7 @@ dist
 
 
 src/models/config.js
-.sequelizerc
+sequelizerc
 src/config
 src/seeders
 src/migrations

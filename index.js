@@ -15,11 +15,11 @@ app.set('views', __dirname + '/src/views');
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
+app.use(express.static(__dirname));
 
-
-app.use('/posts',postRutes)
+app.use('/',postRutes)
 app.get('*',(req,res)=>{
-  return res.status(404).send('404- la ruta no existe');
+  return res.render('base/page404');
 });
 
 
