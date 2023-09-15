@@ -60,10 +60,16 @@ middlewaresValidate.validateNotRepeatedPost = async (req, res, next) => {
   
 }
 middlewaresValidate.validateExistPostWithId= async (req, res, next) =>{
-  const id = parseInt( req.params.post_id );
-  const post = await Posts.findByPk(id);
-  if (post === null) {
-    return res.status(404).render('base/error',{titulo:"ERROR",link:'Ir a mis publicaciones', mensaje:`No exite post con el id: ${id}`,showb:false, color:"warning"})
+  try {
+    const id = parseInt( req.params.post_id );
+    const post = await Posts.findByPk(id);
+    if (post === null) {
+      return res.status(404).render('base/error',{titulo:"ERROR",link:'Ir a mis publicaciones', mensaje:`No exite post con el id: ${id}`,showb:false, color:"warning"})
+    }
+    next();
+  } catch (error) {
+    console.log(error);
   }
+  
 }
 module.exports = middlewaresValidate;

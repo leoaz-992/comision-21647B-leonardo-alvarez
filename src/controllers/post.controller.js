@@ -25,7 +25,7 @@ PostController.getOnePost =async (req,res)=>{
   try {
     const id = parseInt(req.params.post_id);
     const post = await Posts.findByPk(id);
-    return res.status(200).render('template_post/createPost',{post, titulo:"post creado",link:'Ir a mis publicaciones', mensaje:"post creado satisfactoriamente.", color:"success"});
+    return res.status(200).render('template_post/post',{post, titulo:`publicacion ${id}` ,link:'Ir a mis publicaciones', mensaje:"", color:"success"});
   } catch (error) {
     return res.status(404).render('base/error',{titulo:"ERROR",mensaje:`se produjo el siguiente error: ${error}`,link:'Ir a mis publicaciones', color:'danger' });
   }
