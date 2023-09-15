@@ -2,7 +2,7 @@
 
 ## Descripción 
 
-El proyecto trata sobre una página web personal donde una persona busca tener la capacidad de crear y compartir publicaciones de temas variados. 
+El proyecto trata sobre una página web personal donde el usuario busca tener la capacidad de crear y compartir publicaciones de temas variados. 
 
 El proyecto está construido con Express como servidor, MYSQL como gestor de base de datos, con Sequelize como ORM y EJS como motor de visualización de pantillas.
 
@@ -43,7 +43,6 @@ npm run start
 ```
 Podra ver el proyecto corriendo en: 
 [http://localhost:3000](http://localhost:3000/)
-
 
 
 ## Version History

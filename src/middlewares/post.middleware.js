@@ -62,6 +62,9 @@ middlewaresValidate.validateNotRepeatedPost = async (req, res, next) => {
 middlewaresValidate.validateExistPostWithId= async (req, res, next) =>{
   try {
     const id = parseInt( req.params.post_id );
+    if (isNaN(id)) {
+      return res.status(404).render('base/error',{titulo:"ERROR",link:'Ir a mis publicaciones', mensaje:`No exite post con el id: ${req.params.post_id}`,showb:false, color:"warning"})
+    }
     const post = await Posts.findByPk(id);
     if (post === null) {
       return res.status(404).render('base/error',{titulo:"ERROR",link:'Ir a mis publicaciones', mensaje:`No exite post con el id: ${id}`,showb:false, color:"warning"})
