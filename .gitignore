@@ -136,4 +136,4 @@ src/models/config.js
 sequelizerc
 src/config
 src/seeders
-src/migrations
+src/models/index.js
