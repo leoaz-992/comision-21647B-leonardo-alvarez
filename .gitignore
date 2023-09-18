@@ -132,8 +132,6 @@ dist
 .pnp.*
 
 
-src/models/config.js
-sequelizerc
 src/config
 src/seeders
 src/models/index.js
