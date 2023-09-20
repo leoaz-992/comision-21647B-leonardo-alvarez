@@ -2,16 +2,13 @@
     <%- include('../base/nav',{tituloHeader:link,showbutton:true}); %>
     <div class="container mt-1">
       <div class="row justify-content-center">
-        <div class="col-md-8 col-sm-6">
+        <div class="col-md-8 ">
           <% for (post of posts){ %>
           <div class="card my-3">
-            <!-- <img src="<%=post.imagePost%>" class="card-img-top" alt="<%=post.imagePost%>"> -->
+            <img src='<%=post.imagePost%>' class="card-img-top img-fluid " alt="<%=post.imagePost%>">
             <div class="card-body">
               <h5 class="card-title"><%= post.titlePost %></h5>
               <p class="card-text"><%= post.contentPost %></p>
-              <div class="card-text">
-                <a href="<%= post.imagePost %>" target="_blank">imagen</a>
-              </div>
               <p class="card-text float-md-end">
                 <small class="text-body-secondary"><%= post.createdAt %></small>
               </p>
