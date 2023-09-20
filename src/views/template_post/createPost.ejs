@@ -6,12 +6,10 @@
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
       <div class="card my-3">
+        <img src='<%=post.imagePost%>' class="card-img-top" alt="<%=post.imagePost%>" width="480px">
         <div class="card-body">
           <h5 class="card-title"><%= post.titlePost %></h5>
           <p class="card-text"><%= post.contentPost %></p>
-          <div class="card-text">
-            <a href="<%= post.imagePost %>" target="_blank">imagen</a>
-          </div>
           <p class="card-text float-md-end">
             <small class="text-body-secondary"><%= post.createdAt %></small>
           </p>

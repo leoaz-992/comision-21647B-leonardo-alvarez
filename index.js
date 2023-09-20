@@ -10,6 +10,14 @@ app.use(helmet());
 
 const port = process.env.PORT || 3000;
 
+app.use(function (req, res, next) {
+  res.setHeader(
+    'Content-Security-Policy',
+    "default-src 'self'; font-src 'self'; img-src 'self' data: https://cdn.pixabay.com  https://img.freepik.com ; script-src 'self'; style-src 'self';frame-src 'self'"
+  );
+  next();
+});
+
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/src/views');
 
@@ -21,7 +29,6 @@ app.use('/',postRutes)
 app.get('*',(req,res)=>{
   return res.render('base/page404');
 });
-
 
 sequelize.authenticate()
   .then(() => {
