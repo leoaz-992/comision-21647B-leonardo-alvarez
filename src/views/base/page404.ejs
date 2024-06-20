@@ -1,15 +1,16 @@
-<%- include('head',{titulo:'400 | Page not found'}); %>
-      <%- include('nav',{tituloHeader:"Ir al inicio",showbutton:false}); %>
-      <div class="bg-dark text-center pt-lg-5">
-        <div class="container mt-2 mb-3">
-          <h1 class="display-1 pt-5  font-weight-bold text-white-50">404</h1>
-          <h1 class="display-4 pt-1 pb-3 text-white-50">Page not found</h1>
-          <h3 class="font-weight-light text-secondary">
-            The page you are looking for might have <br />
-            been removed
-          </h3>
-          <a href="/" class="btn btn-outline-info mt-3 pt-3 pb-3 pr-4 pl-4"
-            >Ir a inicio</a
-          >
-        </div>
-<%- include('footer'); %>
+<%- include('head',{titulo:'400 | Page not found'}); %> <%-
+include('nav',{tituloHeader:"publicaciones",showbutton:false}); %>
+<div class="bg-dark text-center pt-lg-5">
+  <div class="container mt-2 mb-3">
+    <h1 class="display-1 pt-5 font-weight-bold text-white-50">404</h1>
+    <h1 class="display-4 pt-1 pb-3 text-white-50">Pagína no encontrada</h1>
+    <h3 class="font-weight-light text-secondary">
+      No se puede ver la página que estás buscando. <br />
+      La pagina puede haber sido eliminada.
+    </h3>
+    <a href="/" class="btn btn-outline-info mt-3 pt-3 pb-3 pr-4 pl-4"
+      >Ir a inicio</a
+    >
+  </div>
+  <%- include('footer'); %>
+</div>

@@ -1,8 +1,9 @@
 const dotenv = require('dotenv')
 const express = require('express');
 const helmet = require('helmet');
-const {sequelize} =require('./src/models/');
-const postRutes = require('./src/routes/post.routes');
+const {sequelize} = require('./src/models/');
+const postRoutes = require('./src/routes/post.routes');
+const loginRoutes = require('./src/routes/login.routes');
 const csp =require('./src/middlewares/contentSecurityPolicy.middleware');
 
 dotenv.config();
@@ -20,7 +21,8 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(express.static(__dirname));
 
-app.use('/',postRutes)
+app.use('/login',loginRoutes)
+app.use('/',postRoutes)
 app.get('*',(req,res)=>{
   return res.render('base/page404');
 });

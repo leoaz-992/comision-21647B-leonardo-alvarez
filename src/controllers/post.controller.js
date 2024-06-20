@@ -5,7 +5,7 @@ const PostController ={}
  PostController.getAllPost= async(req,res)=>{
   try {
     const posts = await Posts.findAll();
-    return res.render('template_post/index',{posts, titulo:"mis publicaciones",link:'mis publicaciones'});
+    return res.render('template_post/index',{posts, titulo:"mis publicaciones",link:'publicaciones'});
   } catch (error) {
     return res.status(500).render('base/error',{titulo:"ERROR",mensaje:`se produjo el siguiente error: ${error}`,link:'Ir al inicio', color:'danger' })
   }
@@ -14,10 +14,10 @@ const PostController ={}
  PostController.createPost = async (req, res) => {
   try {
     const post = await Posts.create(req.body)
-    return res.render('template_post/createPost',{post, titulo:"post creado",link:'Ir a mis publicaciones', mensaje:"post creado satisfactoriamente.", color:"success"});
+    return res.render('template_post/createPost',{post, titulo:"post creado",link:'Ir a publicaciones', mensaje:"post creado satisfactoriamente.", color:"success"});
   } catch (error) {
     console.log(error)
-    return res.status(404).render('base/error',{titulo:"ERROR",mensaje:`se produjo el siguiente error: ${error}`,link:'Ir a mis publicaciones', color:'danger' })
+    return res.status(404).render('base/error',{titulo:"ERROR",mensaje:`se produjo el siguiente error: ${error}`,link:'Ir a publicaciones', color:'danger' })
   }
 }
 //muestra un post buscando por su id
@@ -25,9 +25,9 @@ PostController.getOnePost =async (req,res)=>{
   try {
     const id = parseInt(req.params.post_id);
     const post = await Posts.findByPk(id);
-    return res.status(200).render('template_post/post',{post, titulo:`publicacion ${id}` ,link:'Ir a mis publicaciones', mensaje:"", color:"success"});
+    return res.status(200).render('template_post/post',{post, titulo:`publicacion ${id}` ,link:'Ir a publicaciones', mensaje:"", color:"success"});
   } catch (error) {
-    return res.status(404).render('base/error',{titulo:"ERROR",mensaje:`se produjo el siguiente error: ${error}`,link:'Ir a mis publicaciones', color:'danger' });
+    return res.status(404).render('base/error',{titulo:"ERROR",mensaje:`se produjo el siguiente error: ${error}`,link:'Ir a publicaciones', color:'danger' });
   }
 }
 // !elimina un post buscando por su id  usa method=get
@@ -38,7 +38,7 @@ PostController.redirectdeletePost =async (req,res)=>{
     post.destroy();
     return res.redirect('/')
   } catch (error) {
-    return res.status(404).render('base/error',{titulo:"ERROR",mensaje:`se produjo el siguiente error: ${error}`,link:'Ir a mis publicaciones', color:'danger' });
+    return res.status(404).render('base/error',{titulo:"ERROR",mensaje:`se produjo el siguiente error: ${error}`,link:'Ir a publicaciones', color:'danger' });
   }
 }
 //* elimina un post buscando por su id
@@ -68,7 +68,7 @@ PostController.redirectUpdatePost =async (req,res)=>{
     await post.save();
     return res.redirect('/')
   } catch (error) {
-    return res.status(404).render('base/error',{titulo:"ERROR",mensaje:`se produjo el siguiente error: ${error}`,link:'Ir a mis publicaciones', color:'danger' });
+    return res.status(404).render('base/error',{titulo:"ERROR",mensaje:`se produjo el siguiente error: ${error}`,link:'Ir a publicaciones', color:'danger' });
   }
 
 }
