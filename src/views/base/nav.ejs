@@ -1,42 +1,83 @@
-<nav class="navbar sticky-top bg-body-tertiary border-bottom border-info">
+<nav
+  class="navbar sticky-top bg-primary-subtle bg-body-tertiary border-bottom border-info"
+>
   <div class="container-fluid">
     <a class="navbar-brand" href="/"><%=tituloHeader%></a>
     <% if (showbutton) { %>
-    <button type="button" class="btn btn-sm btn-outline-secondary mx-2" data-bs-toggle="modal" data-bs-target="#formNewPost">
+    <button
+      type="button"
+      class="btn btn-sm btn-outline-secondary mx-2"
+      data-bs-toggle="modal"
+      data-bs-target="#formNewPost"
+    >
       nueva publicacion
     </button>
     <% } %>
   </div>
 </nav>
-<div class="modal fade" id="formNewPost" tabindex="-1" aria-labelledby="formNewPost" aria-hidden="true">
+<div
+  class="modal fade"
+  id="formNewPost"
+  tabindex="-1"
+  aria-labelledby="formNewPost"
+  aria-hidden="true"
+>
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">nueva publicación</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">
+          nueva publicación
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
       </div>
-      <form  action="/create"  method="post">
+      <form action="/create" method="post">
         <div class="modal-body">
           <div class="mb-3">
             <label for="titlePost" class="form-label">titulo:</label>
-            <input type="text" 
-              class="form-control" 
-              name="titlePost" 
-              id="titlePost" 
-              placeholder="ingrese el titulo de la publicación">
+            <input
+              type="text"
+              class="form-control"
+              name="titlePost"
+              id="titlePost"
+              placeholder="ingrese el titulo de la publicación"
+            />
           </div>
           <div class="mb-3">
             <label for="contentPost" class="form-label">descripción</label>
-            <textarea class="form-control" name="contentPost" id="contentPost" rows="4"></textarea>
+            <textarea
+              class="form-control"
+              name="contentPost"
+              id="contentPost"
+              rows="4"
+            ></textarea>
           </div>
           <div class="mb-3">
             <label for="imagePost" class="form-label">Url de la imagen:</label>
-            <input type="text" class="form-control" id="imagePost" name="imagePost" placeholder="ingrese una url">
+            <input
+              type="text"
+              class="form-control"
+              id="imagePost"
+              name="imagePost"
+              placeholder="ingrese una url"
+            />
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-          <button type="submit" class="btn btn-primary">crear publicación</button>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Cerrar
+          </button>
+          <button type="submit" class="btn btn-primary">
+            crear publicación
+          </button>
         </div>
       </form>
     </div>

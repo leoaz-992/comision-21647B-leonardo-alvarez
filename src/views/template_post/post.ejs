@@ -1,87 +1,115 @@
-<%- include('../base/head',{titulo:titulo}); %>
-    <%- include('../base/nav',{tituloHeader:link,showbutton:true}); %>
-    <div class="container mt-5"style="height: 72vh">
-      <div class="card my-3">
-        <div class="row justify-content-center">
-          <img src='<%=post.imagePost%>' class="card-img-top w-50" alt="<%=post.imagePost%>">
-        </div>
-        <div class="card-body">
-          <h5 class="card-title"><%= post.titlePost %></h5>
-          <p class="card-text"><%= post.contentPost %></p>
-          <p class="card-text float-md-end">
-            <small class="text-body-secondary"><%= post.createdAt %></small>
-          </p>
-        </div>
-        <div class="card-footer">
-          <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <button
-              type="button"
-              class="btn btn-primary btn-sm"
-              data-bs-toggle="modal"
-              data-bs-target="#editPost<%= post.id %>"
-            >
-              Editar
-            </button>
-            <a href="/delete/post/<%= post.id %>" class="miBoton btn btn-danger btn-sm">eliminar</a>
-          </div>
-        </div>
+<%- include('../base/head',{titulo:titulo}); %> <%-
+include('../base/nav',{tituloHeader:link,showbutton:true}); %>
+<div class="container">
+  <div class="row justify-content-center m-0 p-0">
+    <div class="card mt-1 mb-3 w-100">
+      <div class="row justify-content-center py-2">
+        <img
+          src="<%=post.imagePost%>"
+          class="card-img-top w-75"
+          alt="<%=post.imagePost%>"
+        />
       </div>
-      <!-- Modal edit -->
-      <div
-        class="modal fade"
-        id="editPost<%= post.id %>"
-        tabindex="-1"
-        aria-labelledby="modalEditPost"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="modalEditPost">
-                Editar Publicacion: <strong><%= post.titlePost %></strong>
-              </h1>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <form action="/edit/post/<%= post.id %>" method="post">
-              <div class="modal-body">
-                <div class="mb-3">
-                  <label for="titlePost" class="form-label">titulo:</label>
-                  <input type="text" 
-                    class="form-control" 
-                    name="titlePost" 
-                    id="titlePostedit" 
-                    placeholder="ingrese el titulo de la publicación"
-                    value="<%= post.titlePost %>">
-                </div>
-                <div class="mb-3">
-                  <label for="contentPost" class="form-label">descripción</label>
-                  <textarea class="form-control" name="contentPost" id="contentPostedit" rows="4"><%= post.contentPost %></textarea>
-                </div>
-                <div class="mb-3">
-                  <label for="imagePost" class="form-label">Url de la imagen:</label>
-                  <input type="text" class="form-control" id="imagePostedit" name="imagePost" placeholder="ingrese una url" value="<%= post.imagePost %>">
-                </div>
-              </div>
-              <div class="modal-footer">
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  data-bs-dismiss="modal"
-                >
-                  Cerrar
-                </button>
-                <button type="submit" class="btn btn-primary">
-                  editar publicación
-                </button>
-              </div>
-            </form>
-          </div>
+      <div class="card-body">
+        <h5 class="card-title"><%= post.titlePost %></h5>
+        <p class="card-text"><%= post.contentPost %></p>
+        <p class="card-text float-md-end">
+          <small class="text-body-secondary"><%= post.createdAt %></small>
+        </p>
+      </div>
+      <div class="card-footer">
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+          <button
+            type="button"
+            class="btn btn-primary btn-sm"
+            data-bs-toggle="modal"
+            data-bs-target="#editPost<%= post.id %>"
+          >
+            Editar
+          </button>
+          <a
+            href="/delete/post/<%= post.id %>"
+            class="miBoton btn btn-danger btn-sm"
+            >eliminar</a
+          >
         </div>
       </div>
     </div>
-  <%- include('../base/footer'); %>
+  </div>
+  <!-- Modal edit -->
+  <div
+    class="modal fade"
+    id="editPost<%= post.id %>"
+    tabindex="-1"
+    aria-labelledby="modalEditPost"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="modalEditPost">
+            Editar Publicacion: <strong><%= post.titlePost %></strong>
+          </h1>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <form action="/edit/post/<%= post.id %>" method="post">
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="titlePost" class="form-label">titulo:</label>
+              <input
+                type="text"
+                class="form-control"
+                name="titlePost"
+                id="titlePostedit"
+                placeholder="ingrese el titulo de la publicación"
+                value="<%= post.titlePost %>"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="contentPost" class="form-label">descripción</label>
+              <textarea
+                class="form-control"
+                name="contentPost"
+                id="contentPostedit"
+                rows="4"
+              >
+<%= post.contentPost %></textarea
+              >
+            </div>
+            <div class="mb-3">
+              <label for="imagePost" class="form-label"
+                >Url de la imagen:</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="imagePostedit"
+                name="imagePost"
+                placeholder="ingrese una url"
+                value="<%= post.imagePost %>"
+              />
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cerrar
+            </button>
+            <button type="submit" class="btn btn-primary">
+              editar publicación
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<%- include('../base/footer'); %>
