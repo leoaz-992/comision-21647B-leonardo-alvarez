@@ -132,6 +132,4 @@ dist
 .pnp.*
 
 
-src/config
-src/models/index.js
 task.md
