@@ -6,6 +6,8 @@ El proyecto trata sobre una página web personal donde el usuario busca tener la
 
 El proyecto está construido con Express como servidor, MYSQL como gestor de base de datos, con Sequelize como ORM y EJS como motor de visualización de pantillas.
 
+proyecto desplegado en: [blog](https://project-blog-tot8.onrender.com/) :scroll: 
+
 ## Dependencias :bangbang:
 
 Para poder probarlo en un entorno local tenga instalado las siguientes dependencias:
