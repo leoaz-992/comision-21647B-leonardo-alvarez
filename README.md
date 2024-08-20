@@ -3,8 +3,7 @@
 ## Descripción 
 
 El proyecto trata sobre una página web personal donde el usuario busca tener la capacidad de crear y compartir publicaciones de temas variados. 
-
-El proyecto está construido con Express como servidor, MYSQL como gestor de base de datos, con Sequelize como ORM y EJS como motor de visualización de pantillas.
+Está construido con Express como servidor, MYSQL como gestor de base de datos, con Sequelize como ORM y EJS como motor de visualización de pantillas.
 
 proyecto desplegado en: <a href="https://project-blog-tot8.onrender.com/" target="_blank">blog</a> :scroll: 
 
